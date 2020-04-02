@@ -1,39 +1,11 @@
-# Project Name
+Read / GET:
+Send a get request to /api/rentals to get rental info.
 
-> Project description
+Create / POST:
+Send a post request to /api/rentals to send rental info.
 
-## Related Projects
+Update / PUT:
+Send a put request to /api/rentals/:id with rental info in the body to update the rental with that id.
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-
-## Table of Contents
-
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
-
-## Usage
-
-> Some usage instructions
-
-## Requirements
-
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
-
-- Node 6.13.0
-- etc
-
-## Development
-
-### Installing Dependencies
-
-From within the root directory:
-
-```sh
-npm install -g webpack
-npm install
-```
-
+Delete / DELETE:
+Send a delete request to /api/rentals/:id to delete the rental info with that id.
