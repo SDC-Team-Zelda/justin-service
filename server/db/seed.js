@@ -35,7 +35,7 @@ for(let i = 0; i < 100; i++) {
   rental = new Rental({
     // generate rental ids of 1-100
     _id: i + 1,
-    // generate prices of 100-199
+    // generate prices of 100-199`
     price: Math.floor(Math.random() * 100) + 100 ,
     // generate max # of guests from 2-5
     max_guests: Math.floor(Math.random() * 4) + 2,
