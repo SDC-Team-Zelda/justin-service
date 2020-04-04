@@ -2,27 +2,23 @@
 const faker = require('faker');
 const fs = require('fs');
 
-const writeRentals = fs.createWriteStream('rentals.csv'); // make sure to rename file when creating multiple
+const writeRentals = fs.createWriteStream('rentals1.csv');
 writeRentals.write('id,price,max_guests,numReviews,avgStars,cleaning_fee,service_fee,occupancy_fee,availability\n', 'utf8');
 
 function writeTenMillionRentals(writer, encoding, callback) {
-  // let i = 0; // switch to this to create first csv file
-  let i = 10000000; // switch to this to create second csv file
-  // let id = 0; // switch to this to create first csv file
-  let id = 5000002; // switch to this to create second csv file
+  let i = 10000000;
+  let id = 0;
   function write() {
     let ok = true;
     do {
       const randomDate = () => {
-        const randomMonth = Math.floor(Math.random() * 12);
+        const randomMonth = Math.floor(Math.random() * 8) + 4;
         const randomDay = Math.floor(Math.random() * 31) + 1;
         return new Date(2020, randomMonth, randomDay);
       };
-
       let availabilityArr = [];
-
       let randDate, dateString;
-      for (let j = 0; j < Math.floor(Math.random() * 150); j++) {
+      for (let j = 0; j < Math.floor(Math.random() * 100); j++) {
         randDate = randomDate();
         dateString = `${randDate.getMonth() + 1}/${randDate.getDate()}/${randDate.getFullYear()}`;
 
@@ -36,8 +32,8 @@ function writeTenMillionRentals(writer, encoding, callback) {
           availabilityArr.push(dateString);
         }
       }
-      i -= 1;
-      id += 1;
+      i--;
+      id++;
       const price = faker.random.number({ min: 80, max: 200 });
       const max_guests = faker.random.number({ min: 2, max: 6 });
       const numReviews = faker.random.number(20);
@@ -46,17 +42,14 @@ function writeTenMillionRentals(writer, encoding, callback) {
       const service_fee = faker.random.number({ min: 50, max: 99 });
       const occupancy_fee = faker.random.number({ min: 50, max: 99 });
       const availability = availabilityArr;
-      const data = `${id},${price},${max_guests},${numReviews},${avgStars},${cleaning_fee},${service_fee},${occupancy_fee},${availability}\n`;
-      // if (i === 0) { // switch to this when creating first csv file
-      if (i === 5000002) { // switch to this when creating second csv file
+      const data = `${id}:${price}:${max_guests}:${numReviews}:${avgStars}:${cleaning_fee}:${service_fee}:${occupancy_fee}:${availability}\n`;
+      if (i === 0) {
         writer.write(data, encoding, callback);
       } else {
         ok = writer.write(data, encoding);
       }
-    // } while (i > 0 && ok); // switch to this to create first csv file
-    } while (i > 5000002 && ok); // switch to this to create second csv file
-    // if (i > 0) { // switch to this to create first csv file
-    if (i > 5000002) { // switch to this to create second csv file
+    } while (i > 0 && ok);
+    if (i > 0) {
       writer.once('drain', write);
     }
   }

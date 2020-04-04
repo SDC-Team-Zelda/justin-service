@@ -3,7 +3,7 @@ const cors = require('cors');
 const path = require('path');
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
-const parser = require('body-parser');
+const bodyParser = require('body-parser');
 
 const Rental = require('./db/Rental.js');
 
@@ -13,7 +13,7 @@ var app = express();
 
 app.use(cors());
 app.use(express.static(path.resolve(__dirname, '../public')));
-app.use(parser());
+app.use(bodyParser());
 
 app.get('/api/rentals', (req, res) => {
   const id = parseInt(req.query.id);
