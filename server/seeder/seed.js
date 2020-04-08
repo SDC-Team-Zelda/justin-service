@@ -2,7 +2,7 @@
 const faker = require('faker');
 const fs = require('fs');
 
-const writeRentals = fs.createWriteStream('rentals1.csv');
+const writeRentals = fs.createWriteStream('rentals.csv');
 writeRentals.write('id,price,max_guests,numReviews,avgStars,cleaning_fee,service_fee,occupancy_fee,availability\n', 'utf8');
 
 function writeTenMillionRentals(writer, encoding, callback) {
