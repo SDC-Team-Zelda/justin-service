@@ -17,7 +17,7 @@ app.use(
   })
 );
 
-app.get('http://3.15.213.114/api/rental', (req, res) => {
+app.get('http://3.15.213.114:3003/api/rental', (req, res) => {
   const id = req.query.id;
   pool.query(`SELECT * FROM rental WHERE id=${id}`, (err, results) => {
     if (err) {
@@ -27,13 +27,13 @@ app.get('http://3.15.213.114/api/rental', (req, res) => {
   });
 });
 
-app.post('http://3.15.213.114/api/rental', (req, res) => {
+app.post('http://3.15.213.114:3003/api/rental', (req, res) => {
   const { id, price, max_guests, numreviews, avgstars, cleaning_fee, service_fee, occupancy_fee, availability } = req.body
   pool.query(`INSERT INTO rental (id, price, max_guests, numreviews, avgstars, cleaning_fee, service_fee, occupancy_fee, availability) VALUES (${id}, ${price}, ${max_guests}, ${numreviews}, ${avgstars}, ${cleaning_fee}, ${service_fee}, ${occupancy_fee}, '${availability}')`, (err, results) => {
     if (err) {
       console.log(err);
     }
-    res.status(200).send(`Rental added with ID: ${results}`);
+    res.status(200).send('Rental added');
   });
 });
 
