@@ -13,7 +13,7 @@ app.use(express.static(path.resolve(__dirname, '../public')));
 app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
-    extended: true,
+    extended: false,
   })
 );
 
@@ -27,9 +27,15 @@ app.get('/api/rental', (req, res) => {
   });
 });
 
-// app.get('/app.js', (req, res) => {
-//   res.sendFile(path.resolve(__dirname, '.../public/bundle.js'));
-// });
+app.post('/api/rental', (req, res) => {
+  const { id, price, max_guests, numreviews, avgstars, cleaning_fee, service_fee, occupancy_fee, availability } = req.body
+  pool.query(`INSERT INTO rental (id, price, max_guests, numreviews, avgstars, cleaning_fee, service_fee, occupancy_fee, availability) VALUES (${id}, ${price}, ${max_guests}, ${numreviews}, ${avgstars}, ${cleaning_fee}, ${service_fee}, ${occupancy_fee}, '${availability}')`, (err, results) => {
+    if (err) {
+      console.log(err);
+    }
+    res.status(200).send(`Rental added with ID: ${results}`);
+  });
+});
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`);

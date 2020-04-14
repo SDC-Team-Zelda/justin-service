@@ -174,7 +174,6 @@ class BookingBar extends Component {
     axios.get(`/api/rental${queryString}`)
       .then(res => {
         const data = res.data[0];
-        // console.log(data.availability)
         this.setState({
           price: data.price,
           max_guests: data.max_guests,
