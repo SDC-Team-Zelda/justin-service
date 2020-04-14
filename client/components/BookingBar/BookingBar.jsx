@@ -171,7 +171,7 @@ class BookingBar extends Component {
   componentDidMount() {
     const url = window.location.href;
     const queryString = url.slice(url.indexOf("?"));
-    axios.get(`http://18.191.183.167:3003/api/rental${queryString}`)
+    axios.get(`http://ec2-18-191-183-167.us-east-2.compute.amazonaws.com:3003/api/rental${queryString}`)
       .then(res => {
         const data = res.data[0];
         this.setState({
@@ -219,7 +219,7 @@ class BookingBar extends Component {
         <div className={styles.wrapper}>
           <h1 className={styles.price}>${price} <span className={styles.perNight}>per night</span></h1>
           <p className={styles.reviews}>
-            <img src="http://18.191.183.167:3003/img/star.svg" alt="star" className={styles.star}></img>
+            <img src="http://ec2-18-191-183-167.us-east-2.compute.amazonaws.com:3003/img/star.svg" alt="star" className={styles.star}></img>
             <span className={styles.avgStars}><b> {this.state.avgstars} </b></span>
             <span className={styles.numReviews}>({this.state.numreviews} reviews)</span>
           </p>
@@ -229,7 +229,7 @@ class BookingBar extends Component {
               <div className={styles.startDate}>
                 <div className={`${styles.startDateText} ${highlightStartDateStyle}`} onClick={this.handleCalendarPopup} id="startDate">03/20/2020</div>
               </div>
-              <img className={styles.arrow} src="http://18.191.183.167:3003/img/arrow.svg" alt="arrow"></img>
+              <img className={styles.arrow} src="http://ec2-18-191-183-167.us-east-2.compute.amazonaws.com:3003/img/arrow.svg" alt="arrow"></img>
               <div className={styles.endDate}>
                 <div className={`${styles.endDateText} ${highlightEndDateStyle}`} onClick={this.handleCalendarPopup} id="endDate">03/27/2020</div>
               </div>
