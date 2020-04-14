@@ -2,15 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const path = require('path');
+const cassandra = require('./DB/index.js');
 const port = 3003;
-
-const Pool = require('pg').Pool;
-const pool = new Pool({
-  user: 'justincalvo',
-  host: 'localhost',
-  database: 'airbnb',
-  port: 5432,
-});
 
 app.use(bodyParser.json());
 app.use(
@@ -25,9 +18,9 @@ app.get('/', (request, response) => {
   });
 });
 
-app.get('/api/rental', (req, res) => {
+app.get('/api/rentals', (req, res) => {
   const id = req.query.id;
-  pool.query(`SELECT * FROM rental WHERE id=${id}`, (err, results) => {
+  cassandra.execute(`SELECT * FROM rentals WHERE id=${id}`, (err, results) => {
     if (err) {
       console.log(err);
     }
