@@ -2,7 +2,7 @@ const { Pool } = require('pg');
 const pool = new Pool({
   user: 'power_user',
   password: 'justin',
-  host: 'ec2-3-136-154-116.us-east-2.compute.amazonaws.com',
+  host: 'ec2-3-17-71-200.us-east-2.compute.amazonaws.com',
   database: 'airbnb',
   port: '5432',
   max: 20,
