@@ -167,7 +167,6 @@ class BookingBar extends Component {
       showGuestBar: false
     });
   }
-
   componentDidMount() {
     const url = window.location.href;
     const queryString = url.slice(url.indexOf("?"));
