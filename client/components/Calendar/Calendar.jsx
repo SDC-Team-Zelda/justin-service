@@ -82,13 +82,15 @@ class Calendar extends Component {
         <div className={styles.grid}>
           <div className={styles.header}>
             <div className={styles.leftArrowContainer} onClick={this.changeMonth} id="left">
-              <img className={styles.leftArrow} src="http://ec2-3-136-154-116.us-east-2.compute.amazonaws.com:3003/img/arrow.svg" alt="arrow"></img>
+
+              <img className={styles.leftArrow} src="http://ec2-3-17-71-200.us-east-2.compute.amazonaws.com:3003/img/arrow.svg" alt="arrow"></img>
             </div>
             <div className={styles.date}>
               {`${currentMonthString} ${currentYear}`}
             </div>
             <div className={styles.rightArrowContainer} onClick={this.changeMonth} id="right">
-              <img className={styles.rightArrow} src="http://ec2-3-136-154-116.us-east-2.compute.amazonaws.com:3003/img/arrow.svg" alt="arrow"></img>
+
+              <img className={styles.rightArrow} src="http://ec2-3-17-71-200.us-east-2.compute.amazonaws.com:3003/img/arrow.svg" alt="arrow"></img>
             </div>
           </div>
           {daysOfWeek.map(dayOfWeek =>
